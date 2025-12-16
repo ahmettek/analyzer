@@ -1,0 +1,142 @@
+@using DotNet8.WebApi.Helpers
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    @{
+        var pageTitle = ViewData["Title"]?.ToString() ?? "Para Kazanma - Youtube Konsept Fikirleri";
+        var pageDescription = ViewData["Description"]?.ToString() ?? "Para kazanmak için içerik fikirleri, youtube otomasyonu, kanal ve niş fikirleri";
+        var pageSlug = ViewData["Slug"]?.ToString();
+        var pageImage = ViewData["Image"]?.ToString();
+        var pageType = ViewData["PageType"]?.ToString() ?? "website";
+    }
+    
+    <title>@pageTitle</title>
+    <meta name="description" content="@pageDescription">
+    
+    <!-- Canonical URL -->
+    @Html.Raw(SeoHelper.GenerateCanonicalTag(pageSlug))
+    
+    <!-- Open Graph Meta Tags -->
+    @Html.Raw(SeoHelper.GenerateOpenGraphTags(pageTitle, pageDescription, pageSlug, pageImage, pageType))
+    
+    <!-- Twitter Card Meta Tags -->
+    @Html.Raw(SeoHelper.GenerateTwitterCardTags(pageTitle, pageDescription, pageImage))
+    
+    <!-- Preconnect for Performance -->
+    @Html.Raw(SeoHelper.GeneratePreconnectTags())
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/image/logo.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/css/ing.css" asp-append-version="true"/>
+    
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="W6fh8-3rT6Z2-Z5fn6YNH-kci92EyroMkbnaPEcgax4" />
+    
+    <!-- Google Analytics - async for non-blocking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHDJ00HG1X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SHDJ00HG1X');
+    </script>
+    
+    @await RenderSectionAsync("Head", required: false)
+</head>
+<body>
+<header class="menu-container">
+    <!-- Desktop Menu -->
+    <div class="desktop-menu">
+        <a href="/" class="logo">
+            <img alt="İçerik Fikri Logo" src="~/image/logo.png" width="120" height="40"/>
+        </a>
+        <nav class="menu-links">
+            <a href="/" class="Link">Ana Sayfa</a>
+            <a href="/" class="Link">Youtube</a>
+        </nav>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="/" class="logo">
+            <img alt="İçerik Fikri Logo" src="~/image/logo.png" width="120" height="40"/>
+        </a>
+        <button id="menu-toggle" class="burger-icon" aria-label="Menü Aç/Kapat" aria-expanded="false">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+    
+    <!-- Mobile Navigation Links -->
+    <nav id="mobile-menu" class="mobile-links" aria-hidden="true">
+        <a href="/" class="Link">Ana Sayfa</a>
+        <a href="/" class="Link">Youtube</a>
+    </nav>
+</header>
+
+<main>
+    @RenderBody()
+</main>
+
+<footer>
+    <p>Copyright © 2024 icerikfikri.com. Tüm hakları saklıdır.</p>
+    <p>Created by İçerik Fikri</p>
+    <div class="theme-toggle">
+        <span>Light</span>
+        <select aria-label="Tema Seçimi">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+    </div>
+</footer>
+
+<!-- Deferred Scripts for Better Performance -->
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', function() {
+                const isOpen = mobileMenu.classList.toggle('active');
+                
+                // Update aria attributes for accessibility
+                menuToggle.setAttribute('aria-expanded', isOpen);
+                mobileMenu.setAttribute('aria-hidden', !isOpen);
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                }
+            });
+            
+            // Close menu on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                    menuToggle.focus();
+                }
+            });
+        }
+    });
+</script>
+
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

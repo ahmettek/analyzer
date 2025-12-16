@@ -1,0 +1,195 @@
+@using DotNet8.WebApi.Helpers
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    @{
+        var pageTitle = ViewData["Title"]?.ToString() ?? "İngilizce Kartlar - Ücretsiz İngilizce Öğren";
+        var pageDescription = ViewData["Description"]?.ToString() ?? "İngilizceyi en kolay şekilde öğrenmeni sağlayacak bu sistem ve online ingilizce kitabı sayesinde hayallerine bir adım kaldı.";
+        var pageSlug = ViewData["Slug"]?.ToString();
+        var pageImage = ViewData["Image"]?.ToString();
+        var pageType = ViewData["PageType"]?.ToString() ?? "website";
+    }
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>@pageTitle</title>
+    <meta name="description" content="@pageDescription">
+    
+    <!-- Canonical URL -->
+    @Html.Raw(SeoHelper.GenerateCanonicalTag(pageSlug))
+    
+    <!-- Open Graph Meta Tags -->
+    @Html.Raw(SeoHelper.GenerateOpenGraphTags(pageTitle, pageDescription, pageSlug, pageImage, pageType))
+    
+    <!-- Twitter Card Meta Tags -->
+    @Html.Raw(SeoHelper.GenerateTwitterCardTags(pageTitle, pageDescription, pageImage))
+    
+    <!-- Preconnect for Performance -->
+    @Html.Raw(SeoHelper.GeneratePreconnectTags())
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/image/logo.png">
+    
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="04JFf6kSJkXsLMMkdfmj7GEdKpS-jT63tVAiHJ4ZVeU" />
+    
+    <!-- Google Analytics - async for non-blocking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHDJ00HG1X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SHDJ00HG1X');
+    </script>
+    
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+      }
+    </style>
+    <style>
+       body::-webkit-scrollbar {
+         width: 0.5em;
+         z-index: 100;
+         background-color:transparent;
+       }
+      body::-webkit-scrollbar-thumb {
+         background-color:white;
+         box-shadow:0 -100vh 0 100vh #5128f5;
+       }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+    
+    @await RenderSectionAsync("Head", required: false)
+  </head>
+<body>
+<div>
+<!-- Deferred external script for better FCP -->
+<script defer src="https://unpkg.com/dangerous-html@0.1.12/dist/default/lib.umd.js"></script>
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true"/>
+<link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
+<div class="home-container">
+
+<section class="home-banners">
+  <div class="home-menu">
+      <div id="mobile-menu" class="home-mobile-navigation">
+        <a href="/"><img
+          alt="İngilizce Kartlar Logo"
+          src="~/image/logo.png"
+          width="164"
+          height="55"
+          class="home-logo"/></a>
+        <div class="home-links">
+          <span class="Link">Kelimeler</span>
+         <span class="Link">Cümleler</span>
+          <span class="Link">Gramer</span>
+         <a href="/yapay-zeka-destekli-temel-ingilizce-kitabi" class="Link">Online Kitap</a>
+       
+        </div>
+        <div id="close-mobile-menu" class="home-close-mobile-menu">
+          <svg viewBox="0 0 804.5714285714286 1024" class="home-icon" width="24" height="24" aria-label="Menüyü Kapat">
+            <path
+              d="M741.714 755.429c0 14.286-5.714 28.571-16 38.857l-77.714 77.714c-10.286 10.286-24.571 16-38.857 16s-28.571-5.714-38.857-16l-168-168-168 168c-10.286 10.286-24.571 16-38.857 16s-28.571-5.714-38.857-16l-77.714-77.714c-10.286-10.286-16-24.571-16-38.857s5.714-28.571 16-38.857l168-168-168-168c-10.286-10.286-16-24.571-16-38.857s5.714-28.571 16-38.857l77.714-77.714c10.286-10.286 24.571-16 38.857-16s28.571 5.714 38.857 16l168 168 168-168c10.286-10.286 24.571-16 38.857-16s28.571 5.714 38.857 16l77.714 77.714c10.286 10.286 16 24.571 16 38.857s-5.714 28.571-16 38.857l-168 168 168 168c10.286 10.286 16 24.571 16 38.857z"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="home-desktop-navigation">
+        <nav class="home-centered">
+          <div class="home-left">
+            <a href="/"><img
+              alt="İngilizce Kartlar Logo"
+              src="~/image/logo.png"
+              width="180"
+              height="60"
+              class="home-logo1"/></a>
+            <div class="home-links1">
+              <span class="Link">Kelimeler</span>
+              <span class="Link">Cümleler</span>
+               <span class="Link">Gramer</span>
+              <a href="/yapay-zeka-destekli-temel-ingilizce-kitabi" class="Link">Online Kitap</a>
+              <span class="Link"></span>
+            </div>
+          </div>
+          <div class="home-right">
+            <span class="home-sign-in Link">Nedir?</span>
+            <div class="home-get-started">
+              <a href="/yapay-zeka-destekli-temel-ingilizce-kitabi"><span class="home-text006">Başla</span></a>
+            </div>
+            <div id="open-mobile-menu" class="home-burger-menu">
+              <img
+                alt="Menü Aç"
+                src="~/image/pastedimage-yxbd.svg"
+                width="40"
+                height="40"
+                class="home-mobile-menu-button"/>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div>
+        <dangerous-html
+          html="<script>
+  /*
+  Mobile menu - Code Embed
+  */
+  
+  // Mobile menu
+  const mobileMenu = document.querySelector('#mobile-menu')
+  
+  // Buttons
+  const closeButton = document.querySelector('#close-mobile-menu')
+  const openButton = document.querySelector('#open-mobile-menu')
+  
+  // On openButton click, set the mobileMenu position left to -100vw
+  openButton.addEventListener('click', function() {
+      mobileMenu.style.transform = 'translateX(0%)'
+  })
+  
+  // On closeButton click, set the mobileMenu position to 0vw
+  closeButton.addEventListener('click', function() {
+      mobileMenu.style.transform = 'translateX(100%)'
+  })
+  </script>"></dangerous-html>
+      </div>
+    </div>
+    
+ <main>
+    @RenderBody()
+ </main>
+ 
+</section>
+
+<footer class="home-footer">
+  <div class="home-bottom">
+    <img
+      alt="İçerik Fikri Logo"
+      src="~/image/logo.png"
+      width="128"
+      height="43"
+      class="home-branding"/>
+    <span class="home-text138">icerikfikri.com Copyright © 2024</span>
+  </div>
+</footer>
+</div>
+</div>
+
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

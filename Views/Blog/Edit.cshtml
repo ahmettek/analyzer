@@ -1,0 +1,252 @@
+@{
+    Layout = null;
+}
+@model BlogItemDto
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Düzenle</title>
+    
+    <link rel="stylesheet" href="~/css/easyeditor.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/ing.css" asp-append-version="true"/>
+   
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <style type="text/css">
+        body{text-align: left !important;}
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        p{margin: 20px 0;}
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 80%;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 100px auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        select, input[type="text"], textarea {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        #openPopupBtn{
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 16px;
+            width: 80px;
+        }
+
+        #openPopupBtn:hover {
+            background-color: #005bb5;
+        }
+        
+        input#seoTitle {
+            width: 100%;
+            height: 39px;
+            margin: 10px 0;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        input#description {
+            width: 100%;
+            height: 39px;
+            margin: 10px 0;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .container{
+            width:100%;
+            padding-right: var(--bs-gutter-x, 0.75rem);
+            padding-left: var(--bs-gutter-x, 0.75rem);
+            margin-right: auto;
+            margin-left: auto;
+            text-align: left !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Düzenle</h2>
+    <form id="loginForm" method="post" action="/blog/saveorupdate">
+        <div>
+            <input type="hidden" value="@Model.Id" name="id" id="id"/>
+            <label for="title">Başlık:</label><br>
+            <input type="text" id="seoTitle" name="seoTitle" value="@Model.SeoTitle">
+        </div>
+        <br>
+        <div>
+            <label for="description">Açıklama:</label><br>
+            <input type="text" id="description" name="seoDescription" value="@Model.SeoDescription">
+        </div>
+        <br>
+        <div id="sortable">
+            @if (Model.ContentItemList != null)
+            {
+                @foreach (var item in Model.ContentItemList.Items.OrderBy(x => x.Id))
+                {
+                    <p class="edit-content-item" data-type="@item.Type" data-id="@item.Id">@item.Content</p>
+                }
+            }
+        </div>
+        <div class="generic-content">
+            <div id="openPopupBtn">Open Form</div>
+        </div>
+    </form>
+    
+    <div id="submit-order">Submit Order</div>
+</div>
+
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" id="closePopupBtn">&times;</span>
+        <form method="post" action="/blog/saveorupdatecontent/@Model.Id">
+            <input type="hidden" name="ContentId" id="hidden-content-id" value=""/>
+            <select id="type" name="type">
+                <option value="paragraph">p</option>
+                <option value="h2">h2</option>
+                <option value="h3">h3</option>
+                <option value="b">b</option>
+                <option value="li">li</option>
+                <option value="a">a</option>
+            </select>
+
+            <label for="textarea">Content:</label>
+            <textarea id="content" name="content" rows="4" placeholder="Write your comments here..."></textarea>
+
+            <button type="submit">Submit</button>
+            <div class="delete-content-item button">Sil</div>
+        </form>
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.edit-content-item').click(function() {
+            var contentId = $(this).attr('data-id');
+            var content = $(this).text();
+            var type = $(this).attr('data-type');
+            
+            $('#popup').show();
+            $('#hidden-content-id').val(contentId);
+            $('#content').val(content);
+            $("#type option[value='"+type+"']").attr("selected", true);
+        });
+    });
+    
+    const openPopupBtn = document.getElementById('openPopupBtn');
+    const closePopupBtn = document.getElementById('closePopupBtn');
+    const popup = document.getElementById('popup');
+
+    openPopupBtn.addEventListener('click', () => {
+        popup.style.display = 'block';
+    });
+
+    closePopupBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            popup.style.display = 'none';
+            $('#hidden-content-id').val('');
+            $('#content').val('');
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    $(function() {
+        $("#sortable").sortable();
+        $("#sortable").disableSelection();
+
+        $("#submit-order").click(function() {
+            let sortedData = [];
+
+            $("#sortable .edit-content-item").each(function(index) {
+                sortedData.push({
+                    type: $(this).attr("data-type"),
+                    text: $(this).text()
+                });
+            });
+
+            $.ajax({
+                url: '/blog/sortcontent',
+                method: 'POST',
+                data: {
+                    sortedData: sortedData,
+                    id: $('#id').val(),
+                },
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+            });
+        });
+    });
+</script>
+</html>

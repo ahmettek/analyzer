@@ -1,0 +1,47 @@
+@{
+    Layout = null;
+}
+
+@model BlogListViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Listesi</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ebebeb;
+  }
+  tr:nth-child(even) {
+    background-color: #ebebeb;
+  }
+</style>
+</head>
+<body>
+
+<h2>Blog Listesi</h2>
+
+<table>
+  <tr>
+    <th>Başlık</th>
+    <th>Düzenle</th>
+    <th>Sil</th>
+  </tr>
+  @foreach(var item in Model.BlogList){
+    <tr>
+      <td>@item.SeoTitle</td>
+      <td><a href="/blog/edit/@item.Id">Düzenle</a></td>
+      <td><a href="#">Sil</a></td>
+    </tr>
+  }
+</table>
+
+</body>
+</html>

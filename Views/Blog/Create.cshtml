@@ -1,0 +1,83 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Oluştur</title>
+    
+    <link rel="stylesheet" href="~/css/easyeditor.css" asp-append-version="true"/>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/jquery.easyeditor.js"></script>
+    
+    <script>
+        jQuery(document).ready(function($) {
+            new EasyEditor('#content');
+        });
+    </script>
+    
+    <style>
+        input#seoTitle {
+            width: 60%;
+            height: 39px;
+            margin: 10px 0;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        input#description {
+            width: 60%;
+            height: 39px;
+            margin: 10px 0;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .container{
+            width: 100%;
+            padding-right: var(--bs-gutter-x, 0.75rem);
+            padding-left: var(--bs-gutter-x, 0.75rem);
+            margin-right: auto;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Blog Oluştur</h2>
+<div class="container">
+    
+<form id="loginForm" method="post" action="/blog/saveorupdate">
+    <div>
+        <label for="title">Başlık:</label><br>
+        <input type="text" id="seoTitle" name="seoTitle">
+    </div>
+    <br>
+    <div>
+        <label for="description">Açıklama:</label><br>
+        <input type="text" id="description" name="seoDescription">
+    </div>
+    <br>
+    <div>
+        <label for="content">İçerik:</label><br>
+        <textarea id="content" name="content" placeholder="Type here ... "></textarea>
+    </div>
+    <br>
+    <div>
+        <button type="submit" onclick="submitform()">Gönder</button>
+    </div>
+</form>
+
+</div>
+</body>
+
+<script>
+function submitform() {
+    document.getElementById('loginForm').submit();
+}
+</script>
+</html>

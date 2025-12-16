@@ -1,0 +1,75 @@
+@{
+    ViewData["Title"] = "İçerik Fikri - Para Kazandıran İçerik Fikirleri ve Youtube Konseptleri";
+    ViewData["Description"] = "Para kazanmak için içerik fikirleri, YouTube otomasyon stratejileri, viral kanal konseptleri ve niş fikirler. Pasif gelir için içerik üretim rehberi.";
+    ViewData["PageType"] = "website";
+    Layout = "_LayoutMulti";
+}
+
+@using DotNet8.WebApi.Helpers
+@model HomePageViewModel
+
+@section Head {
+    <!-- WebSite Schema -->
+    @Html.Raw(SeoHelper.GenerateWebsiteSchema())
+    
+    <!-- Organization Schema -->
+    @Html.Raw(SeoHelper.GenerateOrganizationSchema())
+}
+
+<section class="top-section">
+    @foreach (var item in Model.TopBlogList)
+    { 
+        <a href="/@item.Slug" class="card"> 
+            @if (item.ImageUrl == "/") 
+            { 
+                <img src="https://picsum.photos/600/300?random=@item.SeoTitle.Length" 
+                     alt="@item.SeoTitle" 
+                     class="main-image"
+                     width="600"
+                     height="300"
+                     loading="lazy"> 
+            } 
+            else 
+            { 
+                <img src="@item.ImageUrl" 
+                     alt="@item.SeoTitle" 
+                     class="main-image"
+                     width="600"
+                     height="300"
+                     loading="lazy"> 
+            } 
+            <h3 class="category">Technology</h3> 
+            <h2>@item.SeoTitle</h2> 
+            <p>@item.Author - <time datetime="@item.CreatedDate">@item.CreatedDate</time></p> 
+        </a>
+    } 
+</section>
+
+<section class="bottom-section">
+    @foreach (var item in Model.BlogList) 
+    { 
+        <a href="/@item.Slug" class="card"> 
+            @if (item.ImageUrl == "/") 
+            { 
+                <img src="https://picsum.photos/400/400?random=@item.SeoTitle.Length" 
+                     alt="@item.SeoTitle" 
+                     class="main-image"
+                     width="400"
+                     height="400"
+                     loading="lazy"> 
+            } 
+            else 
+            { 
+                <img src="@item.ImageUrl" 
+                     alt="@item.SeoTitle" 
+                     class="main-image"
+                     width="400"
+                     height="400"
+                     loading="lazy"> 
+            } 
+            <h3 class="category">DESIGN</h3> 
+            <h2>@item.SeoTitle</h2> 
+            <p>@item.Author - <time datetime="@item.CreatedDate">@item.CreatedDate</time></p> 
+        </a> 
+    } 
+</section>

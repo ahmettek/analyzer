@@ -1,0 +1,1355 @@
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../fonts/Inter-VariableFont_wght.ttf') format('truetype');
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #fff;
+    padding: 20px;  max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    padding: 20px;
+    text-align:center;
+}
+
+.content-container {
+    max-width: 800px;
+    margin: 10px auto 0 auto;
+    padding: 20px;
+    text-align:center;
+}
+
+.categories {
+    margin-bottom: 15px;
+}
+
+.category {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #7c7cb2;
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+
+h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    margin-top: .5rem;
+    color: rgb(38 38 38/1);
+    font-weight: 600;
+    margin-bottom: 40px;
+
+}
+
+h2{
+    font-family: "Inter", sans-serif;
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 1.5em;
+    line-height: 28px;
+    color: #333;
+    display: block;
+}
+
+h3 {
+    font-family: "Inter", sans-serif;
+    text-align: left;
+    display: block;
+    margin: 25px 0 0px 0px;
+    width: 100%;
+    font-weight: 500;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+.author-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    display:block;
+}
+
+.meta-info {
+    font-size: 14px;
+    color: #777;
+    display:block;
+    width:100%;
+}
+
+.author-name {
+    display:none;
+    font-weight: bold;
+    color: #333;
+}
+
+.date {
+    color: #888;
+}
+
+.featured-image {
+    margin-bottom: 20px;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.content p {
+    text-align:left;
+    font-size: 16px;
+    line-height: 28px;
+    color: #374151;
+
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+}
+
+.content strong {
+    text-align: left;
+    font-weight: 600;
+    margin-top: 13px;
+}
+.author-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align:center;
+}
+
+.author-box {
+    display: flex;
+    align-items: center;
+    background-color: rgb(250 250 250/1);
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+.author-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.author-info {
+    max-width: 600px;
+}
+
+.author-info h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.author-info p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.view-profile {
+    color: #0073e6;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #eaeaea;
+    background-color: #fff;
+}
+
+footer p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.theme-toggle {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.theme-toggle span {
+    margin-right: 5px;
+}
+
+select {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+strong{    font-weight: 600;}
+
+
+/* Rest of the page CSS here */
+.top-section, .bottom-section {
+    display: grid;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.top-section {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top:75px;
+}
+
+.bottom-section {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 20px;
+}
+
+
+.card {
+    padding: 15px;
+    text-align: left;
+    border-radius: 8px;
+    background-color: #fff;
+    text-decoration: none; /* Linkin alt çizgilerini kaldır */
+    color: inherit; /* Renkleri kartın içerisine uyumlu hale getir */
+    display: block; /* Kartın tamamını tıklanabilir yapar */
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.bottom-section .card img {
+    width: 100%;         /* Genişlik tam kalsın */
+    height: auto;        /* Yükseklik otomatik */
+    aspect-ratio: 1/1;
+}
+
+
+.card h3.category {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #7c7cb2;
+    text-transform: uppercase;
+    margin-right: 10px;
+    margin-top:10px; margin-bottom:10px;
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 12px;
+    color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 0 10px;
+    }
+
+    .top-section, .bottom-section {
+        grid-template-columns: 1fr;
+    }
+
+    .bottom-section .card img {
+        width: 100%;         /* Genişlik tam kalsın */
+        height: auto;        /* Yükseklik otomatik */
+        aspect-ratio: 1/1;   /* Görüntüyü her zaman kare yap */
+    }
+    .top-section .card{
+        padding: 15px 0;
+    }
+    .bottom-section .card{
+        padding: 15px 0;
+    }
+
+    .bottom-section .card img {
+        width: 100%;
+        height: 65%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+
+/*navbar*/
+
+.language-select {
+    margin-left: 20px;
+}
+.language-select select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+/* Basic styles for navigation bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    background-color: #fff;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+    justify-content: space-between;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+}
+
+/* Hide the hamburger menu by default */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #fff;
+        width: 200px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Display the hamburger menu */
+    .hamburger {
+        display: block;
+    }
+
+    /* When menu is active (on click), display the links */
+    nav ul.active {
+        display: flex;
+    }
+}
+
+/* Styling the hamburger menu */
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #000;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+/*navbar*/
+
+/*
+header {
+    background-color: white;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo a {
+    color: #333;
+    font-size: 1.6rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #f0f0f0;
+}
+
+.language-select select {
+    padding: 8px;
+    font-size: 1rem;
+    border: none;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    border-radius: 4px;
+}
+
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .nav-links li.language-select {
+        margin-top: 10px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .menu-toggle.open .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-toggle.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.open .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+*/
+
+
+/*Hero section*/
+
+
+.hero {
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px;
+    /*  background-color: #f3f4f6;
+     margin-top: 60px; */
+    border-radius: 30px;
+}
+
+.hero-content {
+    max-width: 500px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    line-height: 38px;
+    font-weight: bold;
+    color: #111;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #666;
+    margin-top: 25px;
+    font-weight: 300;
+}
+
+.cta-area {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.get-started-btn {
+    display: inline-block;
+    padding: 13px 23px;
+    background-color: #111;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 15px;
+    margin-right: 20px;
+}
+
+.social-proof .user-count {
+    display: flex;
+    align-items: center;
+}
+
+.social-proof .user-count img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.social-proof .user-count span {
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+.hero-image img {
+    width: 400px;
+    border-radius: 20px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .cta-area {
+        justify-content: center;
+    }
+
+    .hero-image img {
+        width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 38px;
+        line-height: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .get-started-btn {
+        width: 100%;
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+
+    .hero-image img {
+        width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .get-started-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .hero-image img {
+        width: 250px;
+    }
+
+    header {
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+
+}
+/*Hero section*/
+
+
+/* Toggle switch container */
+.toggle-switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    margin: 9px auto;
+}
+
+
+.toggle-input {
+    display: none;
+}
+
+.toggle-label {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #ffc107;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-input:checked + .toggle-label {
+    background-color: #4CAF50; /* Green when toggled on */
+}
+
+.toggle-input:checked + .toggle-label .toggle-slider {
+    transform: translateX(30px);
+}
+
+/* Toggle switch container */
+p.info-p{
+    font-size: 16px;
+    color: #333;
+    font-weight: 300;
+    margin-bottom: 35px;
+    line-height: 32px;
+
+}
+
+li.level-test-item{
+    border: 1px solid #ebebeb;
+    border-radius: 8px;
+    padding: 27px;
+   background: #f9f9f9; 
+    list-style: none;
+    margin-top:15px;
+    color: #1c1f23;
+}
+
+span.highlights{
+    padding: 0px 4px;background: #1b6ec2; color: #fff;border-radius: 5px;
+}
+
+
+.bottom-category-section {
+    display: grid;
+    gap: 20px;
+    padding: 0 20px;
+    grid-template-columns: repeat(6, 1fr); /* Masaüstü için 6 kolon */
+    margin-top: 20px;
+}
+.podcast-info-area {
+    padding: 0 35px;
+}
+
+.podcast-info-area h3 {
+    margin-bottom: 10px;
+}
+.podcast-info-area p {
+    font-weight: 200;
+    font-size: 15px;
+}
+/* Podcast Categories */
+.bottom-category-section .card {
+    padding: 15px;
+    text-align: left;
+    border-radius: 8px;
+    background-color: #fff;
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Kartın tamamını tıklanabilir yapar */
+}
+
+
+
+/* Resim ve bölüm sayısını içeren kapsayıcı */
+.image-container {
+    position: relative; /* Span'in yerleşimini ayarlayabilmek için */
+}
+
+.bottom-category-section .card img {
+    width: 100%;         /* Genişlik tam kalsın */
+    height: auto;        /* Yükseklik otomatik */
+    aspect-ratio: 1/1;   /* Görüntüyü her zaman kare yap */
+    object-fit: cover;   /* Görüntüyü kapsa */
+}
+
+/* Bölüm sayısı */
+.episode-count {
+    position: absolute;
+    bottom: 10px;        /* Sol alt köşeye yerleşim */
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* Arka planı yarı şeffaf siyah yap */
+    color: white;        /* Yazı rengini beyaz yap */
+    padding: 5px 10px;   /* Küçük bir iç boşluk ekle */
+    font-size: 12px;     /* Yazı boyutu küçük */
+    border-radius: 5px;  /* Kenarları yuvarlat */
+}
+
+/* Mobil Görünüm */
+@media (max-width: 768px) {
+    .bottom-category-section {
+        display: flex;
+        gap: 5px;
+        overflow-x: auto; /* Yatay kaydırma ekler */
+        -webkit-overflow-scrolling: touch; /* iOS için daha düzgün kaydırma */
+        scroll-snap-type: x mandatory; /* Kartları kaydırırken hizalamak için */
+        padding-bottom: 20px; /* Kaydırma çubuğu için ekstra alan */
+    }
+
+    .bottom-category-section .card {
+        min-width: 40%; /* Kartların genişliğini ayarlar, daha küçük bir genişlik verebilirsin */
+        scroll-snap-align: start; /* Kartların hizalanması */
+   
+    }
+    .podcast-info-area {
+        padding: 0 20px;
+    }
+    .bottom-category-section .card img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
+
+/* Podcast Categories */
+
+/*PODCAST*/
+.podcast-top-section {
+    display: flex;
+    flex-wrap: wrap;  /* Kartların sarılmasını sağla */
+    justify-content: space-between;
+    gap: 20px; /* Kartlar arası boşluk */
+    padding: 20px;
+}
+
+/* Kart tasarımı */
+.podcast-top-section .card {
+    display: flex;
+    flex-direction: row; /* Kart içinde resim ve içeriğin yan yana gelmesi */
+    width: calc(50% - 20px); /* Eşit genişlik ve boşlukla ikiye bölünmüş layout */
+ 
+    text-decoration: none;
+    color: inherit;
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Resim ve play butonu için kapsayıcı */
+.podcast-top-section .image-container {
+    position: relative;
+    flex-shrink: 0;
+    width: 80px;  /* Normalde 80px */
+    height: 80px;
+    margin-right: 15px; /* İçerikten ayırmak için boşluk */
+}
+
+.podcast-top-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px; /* Resim köşelerini yuvarlat */
+}
+
+/* Play butonu */
+.podcast-top-section .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* İçerik kısmı */
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.category {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.podcast-top-section .card h2 {
+    font-size: 14px;
+    margin: 0;
+}
+
+.podcast-top-section .card p {
+    font-size: 12px;
+    margin: 0;
+    color: #555;
+}
+
+/* Dakika */
+.podcast-top-section .card .duration {
+    font-size: 12px;
+    color: #888;
+}
+
+.podcast-top-section-header{
+    min-height: 100px;
+    display: block;
+    width: 100%;
+    padding: 20px;
+}
+.podcast-top-section-header p{
+    color: #212529;font-weight: 300;
+    font-size: 14px;
+}
+.podcast-top-section-header h3 {
+    font-family: "Inter", sans-serif;
+    text-align: left;
+    display: block;
+    margin: 5px 0 10px 0px;
+    width: 100%;
+    font-weight: 500;
+}
+
+/* Responsive ayarlar */
+@media (max-width: 768px) {
+    .podcast-top-section {
+        flex-direction: column;
+    }
+
+    .podcast-top-section .card {
+        width: 100%;padding:0;
+    }
+
+    .podcast-top-section .image-container {
+        width: 60px; /* Mobilde resim 60px olacak */
+        height: 60px;
+    }
+
+    .podcast-top-section .play-button {
+        width: 25px; /* Mobilde daha küçük play butonu */
+        height: 25px;
+    }
+    .podcast-top-section-header {
+        padding: 0px; 
+    }
+}
+/*PODCAST*/
+
+/*PODCAST DETAIL*/
+/* Podcast Detail Section */
+.podcast-detail {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Podcast Header */
+.podcast-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.podcast-header .image-container img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.podcast-header .title {
+    font-size: 24px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.podcast-header .description {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #666;
+}
+
+/* Audio Player */
+.audio-player-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.custom-player {
+    display: flex;
+    align-items: center;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.custom-player .play-btn {
+    background-color: #ff6347;
+    border: none;
+    color: white;
+    font-size: 18px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-player .seek-bar {
+    flex-grow: 1;
+    height: 5px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.custom-player .current-time,
+.custom-player .total-duration {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Podcast Text */
+.podcast-text {
+    margin-top: 30px;
+    line-height: 1.6;
+    color: #444;
+    font-size: 16px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+
+    .menu-container{padding: 10px !important;}
+
+    .podcast-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .podcast-header .image-container img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .custom-player .play-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .custom-player {
+        padding: 10px;
+    }
+
+    /* Sticky audio player for mobile */
+    .audio-player-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: white;
+        padding: 0px 0;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-player {
+        max-width: none;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 0;
+        padding: 15px;
+    }
+}
+/*NEW MOBILE MENU*/
+
+/* Genel düzen */
+.menu-container {
+    width: 100%;
+    display: block;
+    padding: 15px 20px;
+    background-color: #fff;
+    position: relative;
+}
+
+/* Desktop Menü */
+.desktop-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.menu-links {
+    display: flex;
+    gap: 40px;
+}
+
+.Link {
+    text-decoration: none;
+    color: #000;
+    font-weight: 400;
+}
+
+.logo img {
+    width: 120px;
+}
+
+/* Mobile Menü */
+.mobile-menu {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.burger-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    background: transparent;
+    border: none;
+    color: #333;
+}
+
+.burger-icon:hover {
+    background-color: #f0f0f0;
+}
+
+.burger-icon:focus {
+    outline: 2px solid #5228F5;
+    outline-offset: 2px;
+}
+
+.burger-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Menü Kapalı Durumdayken (Başlangıçta gizli) */
+.mobile-links {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    border-top: 1px solid #eee;
+}
+
+/* Menü Açıkken */
+.mobile-links.active {
+    display: flex;
+}
+
+.mobile-links a {
+    font-size: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.mobile-links a:hover {
+    background-color: #f8f8f8;
+}
+
+.mobile-links a:last-child {
+    border-bottom: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none !important;
+    }
+
+    .mobile-menu {
+        display: flex !important;
+    }
+}
+/*NEW MOBILE MENU*/
+
+
+
+/*CARDD INTRO*/
+/* Main container */
+.intro-section {
+    display: flex;
+    flex-wrap: wrap;
+    background: #f2f7ff;
+    max-width: 1200px;
+    margin: 40px auto;
+    gap: 20px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+/* Left section for title, description, and button */
+.intro-left {
+    flex: 2;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    /* padding: 0 20px; */
+    /* background-color: #f4f4f4; */
+    border-radius: 8px;
+}
+
+.intro-left h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.intro-left p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.start-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Right section for cards */
+.intro-right {
+    flex: 3;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.intro-card {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-image: url('https://picsum.photos/400/600');
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    border-radius: 8px;
+}
+
+/* Styling for the card content (title, description, and button) */
+.intro-card-content {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+}
+
+.card-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+}
+
+.card-description {
+    font-size: 16px;
+    margin-bottom: 60px;
+}
+
+.intro-card-btn {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    .intro-section {
+        flex-direction: column;
+    }
+
+    .intro-right {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 10px;
+    }
+
+    .intro-card {
+        flex: 0 0 80%;
+        height: 250px;
+    }
+
+    .intro-left h1 {
+        font-size: 28px;
+    }
+
+    .intro-left p {
+        font-size: 16px;
+    }
+
+    .intro-right::-webkit-scrollbar {
+        display: none;
+    }
+    .card-description {
+        margin-bottom: 20px;
+    }
+}
+
+.card-watch{background: #fcb52b;}
+.card-listen{background: #7e85f9;}
+.card-start{background: #73bccd;}
+
+/*CARDD INTRO*/
+
+.word-list {
+    margin-top:25px;
+    list-style-type: none; 
+    text-align: left;
+}
+
+.word-list li::before {
+    content: "- "; 
+}
+
+.word-list li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Kelime anlamları */
+.meaning {
+    color: gray;
+    font-style: italic;
+}
+
+a.in-content {
+    margin-top: 12px;
+    text-align: left;
+    color: blue; /* Normal link rengi */
+    text-decoration: none; /* Alt çizgiyi kaldırmak için */
+}
+
+a.in-content:visited {
+    color: blue; /* Tıklanmış linkin rengi */
+}
+
+a.in-content:hover {
+    color: darkblue; /* Fare üzerine geldiğinde */
+}
+
+a.in-content:active {
+    color: cornflowerblue; /* Tıklanma anında */
+}

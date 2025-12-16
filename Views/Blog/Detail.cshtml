@@ -1,0 +1,87 @@
+@{
+    ViewData["Title"] = Model.SeoTitle;
+    ViewData["Description"] = Model.SeoDescription;
+    ViewData["Slug"] = Model.Slug;
+    ViewData["Image"] = Model.ImageUrl == "/" ? "https://icerikfikri.com/image/logo.png" : Model.ImageUrl;
+    ViewData["PageType"] = "article";
+    Layout = "_LayoutMulti";
+}
+@using DotNet8.WebApi.Helpers
+@model BlogResponseDto
+
+@section Head {
+    <!-- BlogPosting Schema with Image -->
+    @Html.Raw(SeoHelper.GenerateBlogPostingSchema(
+        Model.SeoTitle,
+        Model.SeoDescription,
+        Model.Slug,
+        Model.Author,
+        Model.CreatedDate,
+        Model.ModifiedDate,
+        Model.ImageUrl,
+        Model.HtmlContent
+    ))
+    
+    <!-- Breadcrumb Schema -->
+    @Html.Raw(SeoHelper.GenerateBreadcrumbSchema(Model.SeoTitle, Model.Slug))
+}
+
+<article itemscope itemtype="https://schema.org/BlogPosting">
+    <div class="container">
+        <!-- Article title -->
+        <h1 itemprop="headline">@Model.SeoTitle</h1>
+        
+        <!-- Article metadata -->
+        <div class="article-meta">
+            <div class="meta-info">
+                <p class="author-name" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <span itemprop="name">@Model.Author</span>
+                </p>
+                <p class="date">
+                    <time itemprop="datePublished" datetime="@Model.CreatedDate.ToString("yyyy-MM-dd")">
+                        @Model.CreatedDate.ToString("dd-MM-yyyy")
+                    </time> • 3 dak. okuma
+                </p>
+                <meta itemprop="dateModified" content="@Model.ModifiedDate.ToString("yyyy-MM-dd")" />
+            </div>
+        </div>
+    </div>
+    
+    <!-- Featured image -->
+    <div class="author-container">  
+        <div class="featured-image">
+            @if (Model.ImageUrl == "/")
+            {
+                <img src="https://picsum.photos/900/500?random=3" 
+                     alt="@Model.SeoTitle için görsel" 
+                     class="main-image"
+                     width="900"
+                     height="500"
+                     itemprop="image"
+                     loading="lazy">
+            }
+            else
+            {
+                <img src="@Model.ImageUrl" 
+                     alt="@Model.SeoTitle için görsel" 
+                     class="main-image"
+                     width="900"
+                     height="500"
+                     itemprop="image"
+                     loading="lazy">
+            }
+        </div>
+    </div>
+    
+    <div class="content-container">
+        <!-- Article content -->
+        <div class="content" itemprop="articleBody">
+            @Html.Raw(Model.HtmlContent)
+        </div>
+    </div>
+    
+    <div class="author-container">
+        <meta itemprop="description" content="@Model.SeoDescription" />
+        <link itemprop="mainEntityOfPage" href="https://icerikfikri.com/@Model.Slug" />
+    </div>
+</article>
