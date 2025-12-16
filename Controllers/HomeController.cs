@@ -25,7 +25,7 @@ public class HomeController(AppDbContext dbContext) : Controller
             .AsNoTracking()
             .ToListAsync(cancellationToken);
 
-        var categoryModel = categories.Select(x => new PodcastCategory.CategoryItem
+        var categoryItems = categories.Select(x => new CategoryItemDto
         {
             Title = x.Name,
             Info = x.SeoDescription,
@@ -41,7 +41,7 @@ public class HomeController(AppDbContext dbContext) : Controller
         {
             BlogList = blogItems,
             TopBlogList = topBlogItems,
-            PodcastCategoryModel = new PodcastCategory { Categories = categoryModel }
+            Categories = categoryItems
         });
     }
 
@@ -98,4 +98,3 @@ public class HomeController(AppDbContext dbContext) : Controller
         CreatedDate = x.CreatedDate.ToString("dd-MM-yyyy")
     };
 }
-

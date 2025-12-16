@@ -6,7 +6,7 @@ public class HomePageViewModel
 {
     public List<BlogItemDto> TopBlogList { get; set; } = [];
     public List<BlogItemDto> BlogList { get; set; } = [];
-    public PodcastCategory PodcastCategoryModel { get; set; } = new();
+    public List<CategoryItemDto> Categories { get; set; } = [];
 }
 
 public class BlogListViewModel
@@ -19,4 +19,3 @@ public class ErrorViewModel
     public string? RequestId { get; set; }
     public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 }
-

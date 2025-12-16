@@ -8,6 +8,8 @@ using DotNet8.WebApi.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+// BlogContent ve BlogContentItem Models.DTOs namespace'inden geliyor
+
 namespace DotNet8.WebApi.Controllers;
 
 public class BlogController(AppDbContext dbContext) : Controller

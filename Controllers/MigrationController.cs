@@ -1,5 +1,4 @@
 using DotNet8.WebApi.Data;
-using DotNet8.WebApi.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,18 +32,6 @@ public class MigrationController(AppDbContext postgresDb, MssqlDbContext mssqlDb
             // Accounts
             var accountsResult = await MigrateAccounts(cancellationToken);
             results["accounts"] = accountsResult;
-
-            // Podcasts
-            var podcastsResult = await MigratePodcasts(cancellationToken);
-            results["podcasts"] = podcastsResult;
-
-            // Books
-            var booksResult = await MigrateBooks(cancellationToken);
-            results["books"] = booksResult;
-
-            // Lessons
-            var lessonsResult = await MigrateLessons(cancellationToken);
-            results["lessons"] = lessonsResult;
 
             return Ok(new { success = true, message = "Migration tamamlandı", results });
         }
@@ -183,59 +170,4 @@ public class MigrationController(AppDbContext postgresDb, MssqlDbContext mssqlDb
 
         return new { total = mssqlData.Count, migrated = newData.Count, skipped = mssqlData.Count - newData.Count };
     }
-
-    private async Task<object> MigratePodcasts(CancellationToken cancellationToken)
-    {
-        var mssqlData = await mssqlDb.Podcasts.AsNoTracking().ToListAsync(cancellationToken);
-        var existingIds = await postgresDb.Podcasts.Select(x => x.Id).ToListAsync(cancellationToken);
-        
-        var newData = mssqlData.Where(x => !existingIds.Contains(x.Id)).ToList();
-        
-        // DateTime'ları UTC'ye çevir (PostgreSQL için gerekli)
-        foreach (var item in newData)
-        {
-            item.CreatedDate = DateTime.SpecifyKind(item.CreatedDate, DateTimeKind.Utc);
-        }
-        
-        if (newData.Count > 0)
-        {
-            postgresDb.Podcasts.AddRange(newData);
-            await postgresDb.SaveChangesAsync(cancellationToken);
-        }
-
-        return new { total = mssqlData.Count, migrated = newData.Count, skipped = mssqlData.Count - newData.Count };
-    }
-
-    private async Task<object> MigrateBooks(CancellationToken cancellationToken)
-    {
-        var mssqlData = await mssqlDb.Books.AsNoTracking().ToListAsync(cancellationToken);
-        var existingIds = await postgresDb.Books.Select(x => x.Id).ToListAsync(cancellationToken);
-        
-        var newData = mssqlData.Where(x => !existingIds.Contains(x.Id)).ToList();
-        
-        if (newData.Count > 0)
-        {
-            postgresDb.Books.AddRange(newData);
-            await postgresDb.SaveChangesAsync(cancellationToken);
-        }
-
-        return new { total = mssqlData.Count, migrated = newData.Count, skipped = mssqlData.Count - newData.Count };
-    }
-
-    private async Task<object> MigrateLessons(CancellationToken cancellationToken)
-    {
-        var mssqlData = await mssqlDb.Lessons.AsNoTracking().ToListAsync(cancellationToken);
-        var existingIds = await postgresDb.Lessons.Select(x => x.Id).ToListAsync(cancellationToken);
-        
-        var newData = mssqlData.Where(x => !existingIds.Contains(x.Id)).ToList();
-        
-        if (newData.Count > 0)
-        {
-            postgresDb.Lessons.AddRange(newData);
-            await postgresDb.SaveChangesAsync(cancellationToken);
-        }
-
-        return new { total = mssqlData.Count, migrated = newData.Count, skipped = mssqlData.Count - newData.Count };
-    }
 }
-
