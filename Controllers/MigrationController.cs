@@ -168,6 +168,13 @@ public class MigrationController(AppDbContext postgresDb, MssqlDbContext mssqlDb
         
         var newData = mssqlData.Where(x => !existingIds.Contains(x.Id)).ToList();
         
+        // NULL değerleri düzelt
+        foreach (var item in newData)
+        {
+            item.Email ??= string.Empty;
+            item.Password ??= string.Empty;
+        }
+        
         if (newData.Count > 0)
         {
             postgresDb.Accounts.AddRange(newData);
